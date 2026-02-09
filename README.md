@@ -1,2 +1,1 @@
-# beta
-beta
+# deposit-project
