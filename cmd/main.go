@@ -33,7 +33,8 @@ func main() {
 		cfg.Postgres.DB,
 	)
 
-	m, err := migrate.New("file://migrations", databaseUrl)
+	// m, err := migrate.New("file://migrations", databaseUrl)
+	m, err := migrate.New("file:///app/migrations", databaseUrl)
 	if err != nil {
 		log.Fatal("error in creating migrations: ", zap.Error(err))
 	}
