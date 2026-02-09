@@ -25,13 +25,7 @@ func main() {
 	// defer cancel()
 
 	cfg := config.NewConfig(".")
-	databaseUrl := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=disable",
-		cfg.Postgres.Username,
-		cfg.Postgres.Password,
-		cfg.Postgres.Host,
-		cfg.Postgres.Port,
-		cfg.Postgres.DB,
-	)
+	databaseUrl := buildDatabaseURL(&cfg)
 
 	// m, err := migrate.New("file://migrations", databaseUrl)
 	m, err := migrate.New("file:///app/migrations", databaseUrl)
@@ -81,4 +75,21 @@ func main() {
 	if err = engine.Run(":8080"); err != nil {
 		log.Fatal(err)
 	}
+}
+
+func buildDatabaseURL(cfg *config.Config) string {
+	// Railway / production
+	if url := os.Getenv("DATABASE_URL"); url != "" {
+		return url
+	}
+
+	// Local fallback
+	return fmt.Sprintf(
+		"postgres://%s:%s@%s:%s/%s?sslmode=disable",
+		cfg.Postgres.Username,
+		cfg.Postgres.Password,
+		cfg.Postgres.Host,
+		cfg.Postgres.Port,
+		cfg.Postgres.DB,
+	)
 }
