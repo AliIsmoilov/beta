@@ -9,12 +9,12 @@ import (
 	"github.com/SaidovZohid/deposit-project/api"
 	"github.com/SaidovZohid/deposit-project/config"
 	"github.com/SaidovZohid/deposit-project/storage"
-	"github.com/golang-migrate/migrate/v4"                     // db automigration
+	_ "github.com/golang-migrate/migrate/v4"                   // db automigration
 	_ "github.com/golang-migrate/migrate/v4/database"          // db automigration
 	_ "github.com/golang-migrate/migrate/v4/database/postgres" // db automigration
 	_ "github.com/golang-migrate/migrate/v4/source/file"       // db automigration
 	_ "github.com/lib/pq"                                      // db driver
-	"go.uber.org/zap"
+	_ "go.uber.org/zap"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -28,14 +28,14 @@ func main() {
 	databaseUrl := buildDatabaseURL(&cfg)
 
 	// m, err := migrate.New("file://migrations", databaseUrl)
-	m, err := migrate.New("file:///app/migrations", databaseUrl)
-	if err != nil {
-		log.Fatal("error in creating migrations: ", zap.Error(err))
-	}
-	fmt.Printf("")
-	if err = m.Up(); err != nil {
-		log.Println("error updating migrations: ", zap.Error(err))
-	}
+	// m, err := migrate.New("file:///app/migrations", databaseUrl)
+	// if err != nil {
+	// 	log.Fatal("error in creating migrations: ", zap.Error(err))
+	// }
+	// fmt.Printf("")
+	// if err = m.Up(); err != nil {
+	// 	log.Println("error updating migrations: ", zap.Error(err))
+	// }
 
 	// Connect to PostgreSQL using GORM
 	db, err := gorm.Open(postgres.Open(databaseUrl), &gorm.Config{
