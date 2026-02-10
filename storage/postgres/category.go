@@ -3,7 +3,8 @@ package postgres
 import (
 	"context"
 
-	"github.com/SaidovZohid/deposit-project/storage/repo"
+	"travelxona/storage/repo"
+
 	"gorm.io/gorm"
 )
 

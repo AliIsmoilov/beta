@@ -4,8 +4,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/SaidovZohid/deposit-project/api/models"
-	"github.com/SaidovZohid/deposit-project/storage/repo"
+	"travelxona/api/models"
+	"travelxona/storage/repo"
+
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 )

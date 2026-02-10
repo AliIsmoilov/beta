@@ -1,9 +1,10 @@
 package api
 
 import (
-	v1 "github.com/SaidovZohid/deposit-project/api/v1"
-	"github.com/SaidovZohid/deposit-project/config"
-	"github.com/SaidovZohid/deposit-project/storage"
+	v1 "travelxona/api/v1"
+	"travelxona/config"
+	"travelxona/storage"
+
 	"github.com/gin-gonic/gin"
 )
 

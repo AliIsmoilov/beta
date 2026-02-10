@@ -24,3 +24,8 @@ type Category struct {
 	UpdatedAt string    `json:"updated_at"`
 	DeletedAt string    `json:"deleted_at"`
 }
+
+type LoginRequest struct {
+	Email    string `json:"email" binding:"required,email"`
+	Password string `json:"password" binding:"required"`
+}

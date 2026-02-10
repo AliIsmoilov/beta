@@ -6,9 +6,10 @@ import (
 	"os"
 	"time"
 
-	"github.com/SaidovZohid/deposit-project/api"
-	"github.com/SaidovZohid/deposit-project/config"
-	"github.com/SaidovZohid/deposit-project/storage"
+	"travelxona/api"
+	"travelxona/config"
+	"travelxona/storage"
+
 	_ "github.com/golang-migrate/migrate/v4"                   // db automigration
 	_ "github.com/golang-migrate/migrate/v4/database"          // db automigration
 	_ "github.com/golang-migrate/migrate/v4/database/postgres" // db automigration
@@ -17,6 +18,7 @@ import (
 	_ "go.uber.org/zap"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+
 	"gorm.io/gorm/logger"
 )
 

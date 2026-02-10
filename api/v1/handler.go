@@ -1,8 +1,8 @@
 package v1
 
 import (
-	"github.com/SaidovZohid/deposit-project/config"
-	"github.com/SaidovZohid/deposit-project/storage"
+	"travelxona/config"
+	"travelxona/storage"
 )
 
 type handlerV1 struct {
