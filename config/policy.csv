@@ -1,0 +1,9 @@
+
+
+# public access
+p, any, /v1/users/login, GET
+
+
+# admin access
+p, admin, /v1/categories, POST
+p, admin, /v1/categories/*, GET

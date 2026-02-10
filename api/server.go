@@ -3,14 +3,17 @@ package api
 import (
 	v1 "travelxona/api/v1"
 	"travelxona/config"
+	"travelxona/pkg/middleware"
 	"travelxona/storage"
 
+	"github.com/casbin/casbin/v2"
 	"github.com/gin-gonic/gin"
 )
 
 type Handler struct {
 	Cfg  *config.Config
 	Strg storage.StorageI
+	Enf  *casbin.Enforcer
 }
 
 func New(h *Handler) *gin.Engine {
@@ -22,6 +25,12 @@ func New(h *Handler) *gin.Engine {
 	})
 
 	apiV1 := engine.Group("/v1")
+
+	apiV1.Use(
+		middleware.AuthMiddleware(),
+		middleware.CasbinMiddleware(h.Enf),
+	)
+
 	// apiV1.GET("/user/:id", handlerV1.GetUserById)
 	apiV1.POST("/category", handlerV1.CreateCategory)
 	// apiV1.PUT("/user", handlerV1.UpdateUser)
