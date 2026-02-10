@@ -1,7 +1,7 @@
 
 
 # public access
-p, any, /v1/users/login, GET
+p, any, /v1/users/login, POST
 
 
 # admin access

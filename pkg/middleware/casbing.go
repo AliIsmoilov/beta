@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/casbin/casbin/v2"
@@ -14,6 +15,7 @@ func CasbinMiddleware(e *casbin.Enforcer) gin.HandlerFunc {
 			role = "any"
 		}
 
+		fmt.Printf("Role: %s, Path: %s, Method: %s\n", role, ctx.FullPath(), ctx.Request.Method)
 		allowed, err := e.Enforce(
 			role.(string),
 			ctx.FullPath(),
@@ -23,6 +25,7 @@ func CasbinMiddleware(e *casbin.Enforcer) gin.HandlerFunc {
 			ctx.AbortWithStatus(http.StatusInternalServerError)
 			return
 		}
+		fmt.Printf("Allowed: %v\n", allowed)
 
 		if !allowed {
 			ctx.AbortWithStatus(http.StatusForbidden)
