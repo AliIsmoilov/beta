@@ -28,5 +28,7 @@ func New(h *Handler) *gin.Engine {
 	// apiV1.DELETE("/user/:id", handlerV1.DeleteUser)
 	apiV1.GET("/categories", handlerV1.GetListCategories)
 
+	apiV1.POST("/users/login", handlerV1.Login)
+
 	return engine
 }
