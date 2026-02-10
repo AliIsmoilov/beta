@@ -70,8 +70,8 @@ func main() {
 	strg := storage.New(db)
 
 	enforcer, err := casbin.NewEnforcer(
-		"config/casbin/model.conf",
-		"config/casbin/policy.csv",
+		"config/model.conf",
+		"config/policy.csv",
 	)
 	if err != nil {
 		log.Fatal("failed to init casbin:", err)
