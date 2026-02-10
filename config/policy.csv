@@ -6,4 +6,4 @@ p, any, /v1/users/login, POST
 
 # admin access
 p, admin, /v1/categories, POST
-p, admin, /v1/categories/*, GET
+p, admin, /v1/categories, GET
